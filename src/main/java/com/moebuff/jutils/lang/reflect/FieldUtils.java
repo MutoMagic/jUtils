@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.moebuff.jutils;
+package com.moebuff.jutils.lang.reflect;
 
 /**
  * @author muto
+ * @since 1.0
  */
-public class OS {
+public class FieldUtils {
 }

@@ -107,7 +107,7 @@ public class StringUtils {
         }
 
         char[] ca = str.toCharArray();
-        // 字母 A 并不是 TitleCase
+        // Character.isTitleCase("A") == false
         if (Character.isUpperCase(ca[0]) || !Character.isLetter(ca[0])
         ) {
             return str;
