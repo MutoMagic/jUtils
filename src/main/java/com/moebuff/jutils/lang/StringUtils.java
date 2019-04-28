@@ -40,6 +40,8 @@ public class StringUtils {
     //-----------------------------------------------------------------------
 
     /**
+     * 检查字符序列是否为空
+     *
      * <pre>
      * StringUtils.isEmpty(null)       = true
      * StringUtils.isEmpty("")         = true
@@ -48,8 +50,8 @@ public class StringUtils {
      * StringUtils.isEmpty("  alex  ") = false
      * </pre>
      *
-     * @param cs
-     * @return
+     * @param cs 需要检查的字符序列，可以为null
+     * @return 当字符序列为空时返回 {@code true}
      */
     public static boolean isEmpty(final CharSequence cs) {
         return cs == null || cs.length() == 0;
@@ -60,6 +62,8 @@ public class StringUtils {
     }
 
     /**
+     * 检查字符序列是否为空白
+     *
      * <pre>
      * StringUtils.isEmpty(null)       = true
      * StringUtils.isEmpty("")         = true
@@ -68,8 +72,8 @@ public class StringUtils {
      * StringUtils.isEmpty("  alex  ") = false
      * </pre>
      *
-     * @param cs
-     * @return
+     * @param cs 需要检查的字符序列，可以为null
+     * @return 当字符序列为空白时返回 {@code true}
      */
     public static boolean isBlank(final CharSequence cs) {
         int length;

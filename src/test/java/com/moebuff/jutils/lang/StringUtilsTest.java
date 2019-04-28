@@ -18,13 +18,31 @@ package com.moebuff.jutils.lang;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class StringUtilsTest {
 
     @Test
     public void testNullString() {
         assertEquals("null", StringUtils.NULL_STRING);
+    }
+
+    @Test
+    public void testIsEmpty() {
+        assertTrue(StringUtils.isEmpty(null));
+        assertTrue(StringUtils.isEmpty(""));
+        assertFalse(StringUtils.isEmpty(" "));
+        assertFalse(StringUtils.isEmpty("alex"));
+        assertFalse(StringUtils.isEmpty("  alex  "));
+    }
+
+    @Test
+    public void testIsBlank() {
+        assertTrue(StringUtils.isBlank(null));
+        assertTrue(StringUtils.isBlank(""));
+        assertTrue(StringUtils.isBlank(" "));
+        assertFalse(StringUtils.isBlank("alex"));
+        assertFalse(StringUtils.isBlank("  alex  "));
     }
 
 }
