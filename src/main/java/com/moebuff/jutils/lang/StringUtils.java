@@ -93,7 +93,28 @@ public class StringUtils {
         return !isBlank(cs);
     }
 
-    //
     //-----------------------------------------------------------------------
+
+    /**
+     * 首字母大写
+     *
+     * @param str 需要大写的字符串，可以为null
+     * @return 大写后的字符串，当 {@code str} 为null时返回 {@code null}
+     */
+    public static String capitalize(final String str) {
+        if (StringUtils.isEmpty(str)) {
+            return str;
+        }
+
+        char[] ca = str.toCharArray();
+        // 字母 A 并不是 TitleCase
+        if (Character.isUpperCase(ca[0]) || !Character.isLetter(ca[0])
+        ) {
+            return str;
+        }
+
+        ca[0] -= 32;
+        return new String(ca);
+    }
 
 }

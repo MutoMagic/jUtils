@@ -45,4 +45,16 @@ public class StringUtilsTest {
         assertFalse(StringUtils.isBlank("  alex  "));
     }
 
+    @Test
+    public void testCapitalize() {
+        assertNull(StringUtils.capitalize(null));
+        assertEquals("Alex",StringUtils.capitalize("alex"));
+        assertEquals(" alex ",StringUtils.capitalize(" alex "));
+        assertEquals("Alex",StringUtils.capitalize("Alex"));
+        assertEquals("9Alex",StringUtils.capitalize("9Alex"));
+        assertEquals("!Alex",StringUtils.capitalize("!Alex"));
+        assertEquals("",StringUtils.capitalize(""));
+        assertEquals(" ",StringUtils.capitalize(" "));
+    }
+
 }
