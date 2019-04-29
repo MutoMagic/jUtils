@@ -14,24 +14,31 @@
  * limitations under the License.
  */
 
-package com.moebuff.jutils.lang.reflect;
+package com.moebuff.jutils.lang;
 
-import java.lang.reflect.Field;
+import org.junit.Test;
 
-/**
- * 通过反射使用 {@link java.lang.reflect.Field Fields} 的实用程序。
- *
- * @author muto
- * @since 1.0
- */
-public class FieldUtils {
+import static org.junit.Assert.assertEquals;
 
-    public static Field getField(Class<?> cls, String fieldName) {
-        return null;
+public class ValidateTest {
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIsTrue_f_null() {
+        Validate.isTrue(false, null);
     }
 
-    public static Field getDeclaredField(Class<?> cls, String fieldName) {
-        return null;
+    @Test
+    public void testIsTrue_f() {
+        try {
+            Validate.isTrue(false, "test info: %s", "false");
+        } catch (IllegalArgumentException e) {
+            assertEquals("test info: false", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testIsTrue_t() {
+        Validate.isTrue(true, null);
     }
 
 }
