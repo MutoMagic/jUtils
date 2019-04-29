@@ -22,18 +22,27 @@ import static org.junit.Assert.assertEquals;
 
 public class ValidateTest {
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testIsTrue_f_null() {
-        Validate.isTrue(false, null);
-    }
-
     @Test
-    public void testIsTrue_f() {
+    public void testIsTrue() {
         try {
             Validate.isTrue(false, "test info: %s", "false");
         } catch (IllegalArgumentException e) {
             assertEquals("test info: false", e.getMessage());
         }
+    }
+
+    @Test
+    public void testIsTrue_f_null() {
+        try {
+            Validate.isTrue(false, null);
+        } catch (IllegalArgumentException e) {
+            assertEquals("表达式不成立", e.getMessage());
+        }
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIsTrue_f() {
+        Validate.isTrue(false, null);
     }
 
     @Test
