@@ -25,7 +25,7 @@ package com.moebuff.jutils.lang;
  * </ul>
  *
  * <p>所有异常消息都是Java平台定义的
- * <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#syntax">格式字符串</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">格式字符串</a>
  * 。例如：</p>
  *
  * <pre>
