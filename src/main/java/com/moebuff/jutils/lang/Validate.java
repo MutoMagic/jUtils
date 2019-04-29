@@ -14,24 +14,27 @@
  * limitations under the License.
  */
 
-package com.moebuff.jutils.lang.reflect;
-
-import java.lang.reflect.Field;
+package com.moebuff.jutils.lang;
 
 /**
- * 通过反射使用 {@link java.lang.reflect.Field Fields} 的实用程序。
+ * 此类有助于验证参数。验证方法基于以下几个原则：
+ * <ul>
+ *     <li>无效的 {@code null} 会引发 {@link NullPointerException}</li>
+ *     <li>非空参数会导致 {@link IllegalArgumentException}</li>
+ *     <li>Array/Collection/Map/String 中的无效索引会触发 {@link IndexOutOfBoundsException}</li>
+ * </ul>
+ *
+ * <p>所有异常消息都是Java平台定义的
+ * <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#syntax">格式字符串</a>
+ * 。例如：</p>
+ *
+ * <pre>
+ *
+ * </pre>
  *
  * @author muto
+ * @see String#format(String, Object...)
  * @since 1.0
  */
-public class FieldUtils {
-
-    public static Field getField(Class<?> cls, String fieldName) {
-        return FieldUtils.getField(cls, fieldName, true);
-    }
-
-    public static Field getDeclaredField(Class<?> cls, String fieldName) {
-        return FieldUtils.getDeclaredField(cls, fieldName, true);
-    }
-
+public class Validate {
 }

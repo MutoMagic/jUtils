@@ -28,20 +28,20 @@ import java.lang.reflect.Modifier;
 public class MemberUtils {
 
     /**
-     * 检查成员是否包含final修饰符
+     * 检查 {@link Member} 是否包含 {@code final} 修饰符
      *
      * @param m 待检查的成员
-     * @return 当确定成员被final修饰后返回 {@code true}
+     * @return 当 {@code m} 被 {@code final} 修饰后返回 {@code true}
      */
     public static boolean isFinal(final Member m) {
         return m != null && Modifier.isFinal(m.getModifiers());
     }
 
     /**
-     * 检查成员是否允许被访问
+     * 检查 {@link Member} 是否允许被访问
      *
      * @param m 待检查的成员
-     * @return 当成员允许被访问时返回 {@code true}
+     * @return 当 {@code m} 允许被访问时返回 {@code true}
      */
     public static boolean isAccessible(final Member m) {
         return m != null && Modifier.isPublic(m.getModifiers()) && !m.isSynthetic();
