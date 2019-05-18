@@ -30,6 +30,7 @@ package com.moebuff.jutils.lang;
  *
  * <pre>
  * Validate.isTrue(i &gt; 0, "值必须大于零：%d", i);
+ * Validate.notNull(obj, "参数不能为空");
  * </pre>
  *
  * @author muto
@@ -39,6 +40,7 @@ package com.moebuff.jutils.lang;
 public class Validate {
 
     private static final String DEFAULT_IS_TRUE_EX_MESSAGE = "表达式不成立";
+    private static final String DEFAULT_NOT_NULL_EX_MESSAGE = "验证的对象为空";
 
     // isTrue
     //-----------------------------------------------------------------------
@@ -47,14 +49,42 @@ public class Validate {
      * 验证表达式是否为 {@code true}，否则将引发指定消息的异常。根据任意表达式进行验证时，该方法非常有用！
      *
      * @param expression 待验证的表达式
-     * @param message
-     * @param values
-     * @throws IllegalArgumentException
+     * @param message    异常消息
+     * @param values     附加到异常消息的值
+     * @throws IllegalArgumentException 如果表达式为 {@code false}
      */
     public static void isTrue(final boolean expression, final String message, final Object... values) {
         if (!expression) {
-            throw new IllegalArgumentException(message != null ? String.format(message, values)
-                    : DEFAULT_IS_TRUE_EX_MESSAGE);
+            throw new IllegalArgumentException(String.format(message, values));
+        }
+    }
+
+    public static void isTrue(final boolean expression) {
+        if (!expression) {
+            throw new IllegalArgumentException(DEFAULT_IS_TRUE_EX_MESSAGE);
+        }
+    }
+
+    // notNull
+    //-----------------------------------------------------------------------
+
+    /**
+     * 验证指定的参数不是 {@code null} 否则将引发指定消息的异常。
+     *
+     * @param obj     待验证的参数
+     * @param message 异常消息
+     * @param values  附加到异常消息的值
+     * @param <T>     参数 {@code obj} 的类型
+     */
+    public static <T> void notNull(final T obj, final String message, final Object... values) {
+        if (obj == null) {
+            throw new NullPointerException(String.format(message, values));
+        }
+    }
+
+    public static <T> void notNull(final T obj) {
+        if (obj == null) {
+            throw new NullPointerException(DEFAULT_NOT_NULL_EX_MESSAGE);
         }
     }
 
