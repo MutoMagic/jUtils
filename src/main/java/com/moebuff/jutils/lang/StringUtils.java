@@ -19,7 +19,6 @@ package com.moebuff.jutils.lang;
 /**
  * 字符串工具
  *
- * @author muto
  * @since 1.0
  */
 public class StringUtils {

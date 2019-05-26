@@ -22,7 +22,6 @@ import java.lang.reflect.Modifier;
 /**
  * 包含用于处理 {@link java.lang.reflect.Member Members} 的通用代码。
  *
- * @author muto
  * @since 1.0
  */
 public class MemberUtils {

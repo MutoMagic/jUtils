@@ -33,7 +33,6 @@ package com.moebuff.jutils.lang;
  * Validate.notNull(obj, "参数不能为空");
  * </pre>
  *
- * @author muto
  * @see String#format(String, Object...)
  * @since 1.0
  */
@@ -41,6 +40,7 @@ public class Validate {
 
     private static final String DEFAULT_IS_TRUE_EX_MESSAGE = "表达式不成立";
     private static final String DEFAULT_NOT_NULL_EX_MESSAGE = "验证的对象为空";
+    private static final String DEFAULT_NOT_EMPTY_ARRAY_EX_MESSAGE = "验证的数组为空";
 
     // isTrue
     //-----------------------------------------------------------------------
@@ -69,7 +69,7 @@ public class Validate {
     //-----------------------------------------------------------------------
 
     /**
-     * 验证指定的参数不是 {@code null} 否则将引发指定消息的异常。
+     * 验证参数不是 {@code null} 否则将引发指定消息的异常。
      *
      * @param obj     待验证的参数
      * @param message 异常消息
@@ -86,6 +86,22 @@ public class Validate {
         if (obj == null) {
             throw new NullPointerException(DEFAULT_NOT_NULL_EX_MESSAGE);
         }
+    }
+
+    // notEmpty array
+    //-----------------------------------------------------------------------
+
+    public static <T> void notEmpty(final T[] array, final String message, final Object... values) {
+        if (array == null) {
+            throw new NullPointerException(String.format(message, values));
+        }
+        if (array.length == 0) {
+            throw new IllegalArgumentException(String.format(message, values));
+        }
+    }
+
+    public static <T> void notEmpty(final T[] array) {
+        notEmpty(array, DEFAULT_NOT_EMPTY_ARRAY_EX_MESSAGE);
     }
 
 }

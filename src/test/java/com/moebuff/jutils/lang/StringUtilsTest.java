@@ -16,45 +16,48 @@
 
 package com.moebuff.jutils.lang;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class StringUtilsTest {
+class StringUtilsTest {
 
     @Test
-    public void testNullString() {
+    void testNullString() {
         assertEquals("null", StringUtils.NULL_STRING);
     }
 
     @Test
-    public void testIsEmpty() {
+    void testIsEmpty() {
         assertTrue(StringUtils.isEmpty(null));
         assertTrue(StringUtils.isEmpty(""));
+
         assertFalse(StringUtils.isEmpty(" "));
         assertFalse(StringUtils.isEmpty("alex"));
         assertFalse(StringUtils.isEmpty("  alex  "));
     }
 
     @Test
-    public void testIsBlank() {
+    void testIsBlank() {
         assertTrue(StringUtils.isBlank(null));
         assertTrue(StringUtils.isBlank(""));
         assertTrue(StringUtils.isBlank(" "));
+
         assertFalse(StringUtils.isBlank("alex"));
         assertFalse(StringUtils.isBlank("  alex  "));
     }
 
     @Test
-    public void testCapitalize() {
+    void testCapitalize() {
         assertNull(StringUtils.capitalize(null));
-        assertEquals("Alex",StringUtils.capitalize("alex"));
-        assertEquals(" alex ",StringUtils.capitalize(" alex "));
-        assertEquals("Alex",StringUtils.capitalize("Alex"));
-        assertEquals("9Alex",StringUtils.capitalize("9Alex"));
-        assertEquals("!Alex",StringUtils.capitalize("!Alex"));
-        assertEquals("",StringUtils.capitalize(""));
-        assertEquals(" ",StringUtils.capitalize(" "));
+
+        assertEquals("Alex", StringUtils.capitalize("alex"));
+        assertEquals(" alex ", StringUtils.capitalize(" alex "));
+        assertEquals("Alex", StringUtils.capitalize("Alex"));
+        assertEquals("9Alex", StringUtils.capitalize("9Alex"));
+        assertEquals("!Alex", StringUtils.capitalize("!Alex"));
+        assertEquals("", StringUtils.capitalize(""));
+        assertEquals(" ", StringUtils.capitalize(" "));
     }
 
 }

@@ -21,7 +21,6 @@ import java.lang.reflect.Field;
 /**
  * 通过反射使用 {@link java.lang.reflect.Field Fields} 的实用程序。
  *
- * @author muto
  * @since 1.0
  */
 public class FieldUtils {

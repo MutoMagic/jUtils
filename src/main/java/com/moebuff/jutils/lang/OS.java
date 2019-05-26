@@ -17,7 +17,8 @@
 package com.moebuff.jutils.lang;
 
 /**
- * @author muto
+ * @see System
+ * @since 1.0
  */
 public class OS {
 }

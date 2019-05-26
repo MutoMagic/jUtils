@@ -16,18 +16,79 @@
 
 package com.moebuff.jutils.lang;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-public class ValidateTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testIsTrue() {
-        Validate.isTrue(false, "isTrue: ", false);
+class ValidateTest {
+
+    @Nested
+    class testIsTrue {
+
+        @Test
+        void shouldNotThrow() {
+            Validate.isTrue(true, "MSG");
+            Validate.isTrue(true);
+        }
+
+        @Test
+        void withGivenMessage() {
+            final IllegalArgumentException ex = assertThrows(
+                    IllegalArgumentException.class,
+                    () -> Validate.isTrue(false, "MSG"));
+            assertEquals("MSG", ex.getMessage());
+        }
+
+        @Test
+        void defaultMessage() {
+            final IllegalArgumentException ex = assertThrows(
+                    IllegalArgumentException.class,
+                    () -> Validate.isTrue(false));
+            assertEquals("表达式不成立", ex.getMessage());
+        }
+
     }
 
-    @Test(expected = NullPointerException.class)
-    public void testNotNull() {
-        Validate.notNull(null, "isNull: ", "yes");
+    @Nested
+    class testNotNull {
+
+        @Test
+        void shouldNotThrow() {
+            final Object obj = new Object();
+            Validate.notNull(obj, "MSG");
+            Validate.notNull(obj);
+        }
+
+        @Test
+        void withGivenMessage() {
+            final NullPointerException ex = assertThrows(
+                    NullPointerException.class,
+                    () -> Validate.notNull(null, "MSG"));
+            assertEquals("MSG", ex.getMessage());
+        }
+
+        @Test
+        void defaultMessage() {
+            final NullPointerException ex = assertThrows(
+                    NullPointerException.class,
+                    () -> Validate.notNull(null));
+            assertEquals("验证的对象为空", ex.getMessage());
+        }
+
+    }
+
+    @Nested
+    class testNotEmpty {
+
+        @Test
+        void shouldNotThrow() {
+            final Object[] array = new Object[]{null};
+            Validate.notEmpty(array, "MSG");
+            Validate.notEmpty(array);
+        }
+
     }
 
 }
